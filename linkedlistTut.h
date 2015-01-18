@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <assert.h>
-struct node
+typedef struct node
 {
     int data;
     struct node* next;
-};
+}node;
 void push(struct node **,int); 
 int findmiddle(struct node *head){
 	struct node *fast=head;
@@ -180,3 +180,5 @@ int detechLoop(struct node *head){
 	return 0;
 
 }
+
+

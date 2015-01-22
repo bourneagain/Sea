@@ -6,7 +6,37 @@ typedef struct node
     int data;
     struct node* next;
 }node;
-void push(struct node **,int); 
+void push(struct node **,int);
+
+struct node* shuffleMerge(struct node* a,struct node*b){
+    struct node *t1;
+    struct node *t2;
+    t2=b;
+    while(a){
+        if (b){
+            t1=a->next;
+            a->next=t2;
+            t2=t2->next;
+            a->next->next=t1;
+            
+        }
+    }
+        
+    return a;
+}
+
+
+void push_front( struct node *head, int newdata){
+    struct node *newNode = malloc(sizeof(struct node));
+    newNode->data = (*head).data;
+    newNode->next = head->next;
+    (*head).next = newNode;
+    (*head).data = newdata;
+
+//    head->next = newNode;
+    
+    
+}
 int findmiddle(struct node *head){
 	struct node *fast=head;
 	while(head!=NULL && fast->next!=NULL && fast->next->next!=NULL){
@@ -16,6 +46,7 @@ int findmiddle(struct node *head){
 	return head->data;
 }
 void printList(struct node *head){
+    printf("\n\n\nisnde printlist");
 	while(head!=NULL){
 	printf("->%d",head->data);
 	head=head->next;
@@ -73,6 +104,13 @@ int pop(struct node **head_ref){
 /* Given a reference (pointer to pointer) to the head
     of a list and an int, push a new node on the front
     of the list. */
+//struct node* push(struct node* head, int data){
+//    struct node *newnode = malloc(sizeof(struct node));
+//    newnode->data = data;
+//    newnode->next=head;
+//    return newnode;
+//}
+
 void push(struct node** head_ref, int new_data)
 {
 
@@ -142,15 +180,15 @@ int findnth(struct node *head,int index){
 
 
 
-void reverseListRecursive(struct node **head){
-
-	if(head->next==NULL){
-		printf("END %d",(*head)->next);
-		return	;
-	}
-	printf("one %d",*(head)->next);
-	reverseListRecursive(&(*(head)->next));
-}
+//void reverseListRecursive(struct node **head){
+//
+//	if(head->next==NULL){
+//		printf("END %d",(*head)->next);
+//		return	;
+//	}
+//	printf("one %d",*(head)->next);
+//	reverseListRecursive(&(*(head)->next));
+//
 
 void reverseList(struct node **head){
 
